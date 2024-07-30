@@ -4,32 +4,63 @@ import Todo from "./Todo"
 const TodoApp = () => {
   const [todos, setTodos] = useState([])
   const [input, setInput] = useState("")
+  const [editText, setEditText] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (input.length == 0) {
       return null
     }
-    setTodos((prevTodo) => [...prevTodo, input])
+    const newTodo = {
+      id: todos.length + 1,
+      text: input,
+      isEditing: false,
+    }
+    setTodos((prevTodo) => [...prevTodo, newTodo])
     setInput("")
-    console.log(todos)
   }
 
   const handleChange = (e) => {
     setInput(e.target.value)
   }
 
-  const onEditClick = () => {}
+  const onEditClick = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, isEditing: true } : todo
+      )
+    )
+  }
+
+  const onEditSubmit = (id) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, text: editText, isEditing: false } : todo
+      )
+    )
+    setEditText("")
+  }
 
   const onDeleteClick = (id) => {
     const newArr = todos.filter((todo, i) => {
-      return i != id
+      return todo.id != id
     })
     setTodos(newArr)
   }
 
   const todosElement = todos.map((todo, i) => {
-    return <Todo key={i} id={i} todo={todo} onDeleteClick={onDeleteClick} />
+    return (
+      <Todo
+        key={i}
+        id={i}
+        todo={todo}
+        onDeleteClick={onDeleteClick}
+        onEditClick={onEditClick}
+        onEditSubmit={onEditSubmit}
+        editText={editText}
+        setEditText={setEditText}
+      />
+    )
   })
 
   return (
