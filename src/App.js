@@ -4,9 +4,10 @@ import QuoteApp from "./projects/quoteApp/QuoteApp"
 import StopWatch from "./projects/stopWatch/StopWatch"
 import TodoApp from "./projects/todoApp/TodoApp"
 import QnaApp from "./projects/q_and_aApp/QnaApp"
+import CalculatorApp from "./projects/calculator/CalculatorApp"
 
 function App() {
-  return <QnaApp />
+	return <CalculatorApp />
 }
 
 export default App
