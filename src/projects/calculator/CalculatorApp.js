@@ -5,19 +5,8 @@ const CalculatorApp = () => {
 	const [operator, setOperator] = useState(null)
 	const [total, setTotal] = useState(0)
 
-	useEffect(() => {
-		console.log(total)
-	}, [total])
-
-	const onValueChange = (e) => {}
-
-	const onValueClick = (e) => {
-		if (inputNum == 0) {
-			setInputNum(e.target.value)
-		} else {
-			setInputNum((prevNum) => prevNum + e.target.value)
-		}
-	}
+	const onValueClick = () => {}
+	const onValueChange = () => {}
 
 	const onClearClick = () => {
 		setInputNum(0)

@@ -5,9 +5,10 @@ import StopWatch from "./projects/stopWatch/StopWatch"
 import TodoApp from "./projects/todoApp/TodoApp"
 import QnaApp from "./projects/q_and_aApp/QnaApp"
 import CalculatorApp from "./projects/calculator/CalculatorApp"
+import PictureApp from "./projects/pictureApp/PictureApp"
 
 function App() {
-	return <CalculatorApp />
+	return <PictureApp />
 }
 
 export default App
